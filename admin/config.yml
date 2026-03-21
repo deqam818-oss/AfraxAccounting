@@ -17,3 +17,48 @@ collections:
       - { label: "Featured Image", name: "image", widget: "image", required: false }
       - { label: "Summary", name: "summary", widget: "text" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "_data/home.yml"
+        fields:
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Text", name: "hero_text", widget: "text" }
+          - { label: "Hero Button Text", name: "hero_btn", widget: "string" }
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+      - name: "about"
+        label: "About Page"
+        file: "_data/about.yml"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Content", name: "content", widget: "markdown" }
+
+      - name: "services"
+        label: "Services Page"
+        file: "_data/services.yml"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "markdown" }
+
+      - name: "contact"
+        label: "Contact Page"
+        file: "_data/contact.yml"
+        fields:
+          - { label: "Address", name: "address", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Google Maps Embed URL", name: "map_url", widget: "string" }
