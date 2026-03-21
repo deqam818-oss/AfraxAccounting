@@ -1,0 +1,20 @@
+backend:
+  name: github
+  repo: deqam818-oss/AfraxAccounting
+  branch: main
+
+media_folder: "images/uploads"
+
+collections:
+  - name: "news"
+    label: "News Articles"
+    folder: "_articles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", default: "Afrax Accountants" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
