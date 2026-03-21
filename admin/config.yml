@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: deqam818-oss/AfraxAccounting
+  name: git-gateway
   branch: main
 
 media_folder: "images/uploads"
