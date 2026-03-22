@@ -5,11 +5,16 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Afrax Accountants - Professional accounting, tax and payroll services in London." />
+        <link rel="icon" href="images/Logo.png" type="image/png" />
+        <meta property="og:title" content="Afrax Accountants - Professional Accounting Services" />
+        <meta property="og:description" content="Afrax Accountants - Professional accounting, tax and payroll services in London." />
+        <meta property="og:image" content="images/Logo.png" />
+        <meta property="og:url" content="index.html" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/reset.css" type="text/css" />
         <link rel="stylesheet" href="css/style.css" type="text/css" />
-        <script src="js/jquery.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 var btn = document.getElementById('hamburger');
@@ -35,7 +40,7 @@
             <header class="main-header">
                 <div class="container">
                     <div class="logo">
-                        <img src="images/Logo.png1.JPG" alt="Afrax Accountants" />
+                        <a href="index.html"><img src="images/Logo.png1.JPG" alt="Afrax Accountants" /></a>
                     </div>
                     <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
                         <span></span>
@@ -45,9 +50,9 @@
                     <nav class="main-nav" id="main-nav">
                         <ul>
                             <li><a href="index.html" class="active">Home</a></li>
-                            <li><a href="About%20.html">About Us</a></li>
+                            <li><a href="about.html">About Us</a></li>
                             <li><a href="Services.html">Services</a></li>
-                            <li><a href="News%20.html">News</a></li>
+                            <li><a href="news.html">News</a></li>
                             <li><a href="Contect.html">Contact</a></li>
                         </ul>
                     </nav>
@@ -116,21 +121,24 @@
                     <h2>Get In Touch</h2>
                     <div class="section-divider"></div>
                     <div class="form-wrap">
+                        <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="contact-form">
+                        <input type="hidden" name="form-name" value="contact" />
+                        <p hidden><input name="bot-field" /></p>
                         <div class="mc_merge_var">
                             <label class="mc_var_label" for="mc_mv_FNAME">First Name <span class="mc_required">*</span></label>
-                            <input type="text" class="mc_input" id="mc_mv_FNAME" name="mc_mv_FNAME" placeholder="Enter your first name">
+                            <input type="text" class="mc_input" id="mc_mv_FNAME" name="fname" placeholder="Enter your first name" required>
                         </div>
                         <div class="mc_merge_var">
                             <label class="mc_var_label" for="mc_mv_LNAME">Last Name <span class="mc_required">*</span></label>
-                            <input type="text" class="mc_input" id="mc_mv_LNAME" name="mc_mv_LNAME" placeholder="Enter your last name">
+                            <input type="text" class="mc_input" id="mc_mv_LNAME" name="lname" placeholder="Enter your last name" required>
                         </div>
                         <div class="mc_merge_var">
                             <label class="mc_var_label" for="mc_mv_EMAIL">Email Address <span class="mc_required">*</span></label>
-                            <input type="email" class="mc_input" id="mc_mv_EMAIL" name="mc_mv_EMAIL" placeholder="Enter your email address">
+                            <input type="email" class="mc_input" id="mc_mv_EMAIL" name="email" placeholder="Enter your email address" required>
                         </div>
                         <div class="mc_merge_var">
                             <label class="mc_var_label" for="mc_mv_BIZ_TYPE">Type of Business</label>
-                            <select name="mc_mv_BIZ_TYPE" class="mc_input" id="mc_mv_BIZ_TYPE">
+                            <select name="biz_type" class="mc_input" id="mc_mv_BIZ_TYPE">
                                 <option value="">-- Select --</option>
                                 <option value="Sole Trader">Sole Trader</option>
                                 <option value="Partnership">Partnership</option>
@@ -139,7 +147,8 @@
                             </select>
                         </div>
                         <div id="mc_message"></div>
-                        <input class="submit-btn" type="submit" value="Send Message">
+                        <button class="submit-btn" type="submit">Send Message</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -161,9 +170,9 @@
                     <div class="footer-info">
                         <h4>Quick Links</h4>
                         <a href="index.html">Home</a>
-                        <a href="About%20.html">About Us</a>
+                        <a href="about.html">About Us</a>
                         <a href="Services.html">Services</a>
-                        <a href="News%20.html">News</a>
+                        <a href="news.html">News</a>
                         <a href="Contect.html">Contact</a>
                     </div>
                     <div class="footer-info">
@@ -176,7 +185,7 @@
                 <p class="footer-copy">&copy; 2025 Afrax Accountants Ltd. All Rights Reserved.</p>
             </div>
         </footer>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" crossorigin="anonymous"></script>
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {

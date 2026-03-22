@@ -5,13 +5,19 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Contact Afrax Accountants - Get your free consultation today." />
+        <link rel="icon" href="images/Logo.png" type="image/png" />
+        <meta property="og:title" content="Contact - Afrax Accountants" />
+        <meta property="og:description" content="Contact Afrax Accountants - Get your free consultation today." />
+        <meta property="og:image" content="images/Logo.png" />
+        <meta property="og:url" content="Contect.html" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/reset.css" type="text/css" />
         <link rel="stylesheet" href="css/style.css" type="text/css" />
-        <script src="js/jquery.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="js/cms.js"></script>
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', async function () {
                 var btn = document.getElementById('hamburger');
                 var nav = document.getElementById('main-nav');
                 btn.addEventListener('click', function () {
@@ -25,6 +31,21 @@
                 topBtn.addEventListener('click', function () {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
+                // Load contact data from CMS
+                const data = await CMS.loadData('contact.yml');
+                if (data) {
+                    if (data.address) document.getElementById('cms-address').textContent = data.address;
+                    if (data.email) {
+                        const el = document.getElementById('cms-email');
+                        el.textContent = data.email;
+                        el.href = 'mailto:' + data.email;
+                    }
+                    if (data.phone) {
+                        const el = document.getElementById('cms-phone');
+                        el.textContent = data.phone;
+                        el.href = 'tel:' + data.phone.replace(/\s/g, '');
+                    }
+                }
             });
         </script>
     </head>
@@ -35,7 +56,7 @@
             <header class="main-header">
                 <div class="container">
                     <div class="logo">
-                        <img src="images/Logo.png1.JPG" alt="Afrax Accountants" />
+                        <a href="index.html"><img src="images/Logo.png1.JPG" alt="Afrax Accountants" /></a>
                     </div>
                     <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
                         <span></span>
@@ -45,9 +66,9 @@
                     <nav class="main-nav" id="main-nav">
                         <ul>
                             <li><a href="index.html">Home</a></li>
-                            <li><a href="About%20.html">About Us</a></li>
+                            <li><a href="about.html">About Us</a></li>
                             <li><a href="Services.html">Services</a></li>
-                            <li><a href="News%20.html">News</a></li>
+                            <li><a href="news.html">News</a></li>
                             <li><a href="Contect.html" class="active">Contact</a></li>
                         </ul>
                     </nav>
@@ -62,15 +83,15 @@
                 <div class="contact-info-grid">
                     <div class="contact-info-card">
                         <h4>&#128205; Address</h4>
-                        <p>London, United Kingdom</p>
+                        <p id="cms-address">London, United Kingdom</p>
                     </div>
                     <div class="contact-info-card">
                         <h4>&#128231; Email</h4>
-                        <a href="mailto:info@afraxaccountants.co.uk">info@afraxaccountants.co.uk</a>
+                        <a id="cms-email" href="mailto:info@afraxaccountants.co.uk">info@afraxaccountants.co.uk</a>
                     </div>
                     <div class="contact-info-card">
                         <h4>&#128222; Phone</h4>
-                        <a href="tel:+442000000000">+44 (0) 20 0000 0000</a>
+                        <a id="cms-phone" href="tel:+442000000000">+44 (0) 20 0000 0000</a>
                     </div>
                 </div>
             </div>
@@ -81,25 +102,28 @@
                     <h2>Send Us a Message</h2>
                     <div class="section-divider"></div>
                     <div class="form-wrap">
+                        <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="contact-form">
+                        <input type="hidden" name="form-name" value="contact" />
+                        <p hidden><input name="bot-field" /></p>
                         <div class="mc_merge_var">
                             <label class="mc_var_label" for="mc_mv_FNAME">First Name <span class="mc_required">*</span></label>
-                            <input type="text" class="mc_input" id="mc_mv_FNAME" name="mc_mv_FNAME" placeholder="Enter your first name">
+                            <input type="text" class="mc_input" id="mc_mv_FNAME" name="fname" placeholder="Enter your first name" required>
                         </div>
                         <div class="mc_merge_var">
                             <label class="mc_var_label" for="mc_mv_LNAME">Last Name <span class="mc_required">*</span></label>
-                            <input type="text" class="mc_input" id="mc_mv_LNAME" name="mc_mv_LNAME" placeholder="Enter your last name">
+                            <input type="text" class="mc_input" id="mc_mv_LNAME" name="lname" placeholder="Enter your last name" required>
                         </div>
                         <div class="mc_merge_var">
                             <label class="mc_var_label" for="mc_mv_EMAIL">Email Address <span class="mc_required">*</span></label>
-                            <input type="email" class="mc_input" id="mc_mv_EMAIL" name="mc_mv_EMAIL" placeholder="Enter your email address">
+                            <input type="email" class="mc_input" id="mc_mv_EMAIL" name="email" placeholder="Enter your email address" required>
                         </div>
                         <div class="mc_merge_var">
                             <label class="mc_var_label" for="mc_mv_PHONE">Phone Number</label>
-                            <input type="tel" class="mc_input" id="mc_mv_PHONE" name="mc_mv_PHONE" placeholder="Enter your phone number">
+                            <input type="tel" class="mc_input" id="mc_mv_PHONE" name="phone" placeholder="Enter your phone number">
                         </div>
                         <div class="mc_merge_var">
                             <label class="mc_var_label" for="mc_mv_BIZ_TYPE">Type of Business</label>
-                            <select name="mc_mv_BIZ_TYPE" class="mc_input" id="mc_mv_BIZ_TYPE">
+                            <select name="biz_type" class="mc_input" id="mc_mv_BIZ_TYPE">
                                 <option value="">-- Select --</option>
                                 <option value="Sole Trader">Sole Trader</option>
                                 <option value="Partnership">Partnership</option>
@@ -109,10 +133,11 @@
                         </div>
                         <div class="mc_merge_var">
                             <label class="mc_var_label" for="mc_mv_MESSAGE">Message</label>
-                            <textarea class="mc_input" id="mc_mv_MESSAGE" name="mc_mv_MESSAGE" rows="5" placeholder="How can we help you?"></textarea>
+                            <textarea class="mc_input" id="mc_mv_MESSAGE" name="message" rows="5" placeholder="How can we help you?"></textarea>
                         </div>
                         <div id="mc_message"></div>
-                        <input class="submit-btn" type="submit" value="Send Message">
+                        <button class="submit-btn" type="submit">Send Message</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -149,9 +174,9 @@
                     <div class="footer-info">
                         <h4>Quick Links</h4>
                         <a href="index.html">Home</a>
-                        <a href="About%20.html">About Us</a>
+                        <a href="about.html">About Us</a>
                         <a href="Services.html">Services</a>
-                        <a href="News%20.html">News</a>
+                        <a href="news.html">News</a>
                         <a href="Contect.html">Contact</a>
                     </div>
                     <div class="footer-info">
